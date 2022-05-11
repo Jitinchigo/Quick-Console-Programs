@@ -1,0 +1,46 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		//How to print the first non-repeated character from a string?
+		//Set variable string to read:
+		string sCheck = "nagging";
+		
+		sCheck = Console.ReadLine();
+		//Turn string into character array
+		char[] str = sCheck.ToCharArray();
+		string res = "";
+		
+		//First character to contain only one count
+		//create a counter for how many characters have only one count
+		//First character count
+		int chkd = 0;
+		char fChar = ' ';
+		
+		//Go through each character and test against the character array
+		foreach (char c in str)
+		{
+			int count = 0;
+			for (int i = 0; i<str.Length; i++)
+			{
+				if (char.ToLower(c) == char.ToLower(str[i]))
+				{
+					count++;
+				}
+			}
+			res = res + c + " has " + count.ToString() + "\n";
+			
+			//If the first occurence has occured and the count remains at 1 then check and find the first char
+			if (count == 1 && chkd == 0)
+			{
+				chkd++;
+				fChar = c;
+			}
+		}
+		
+		//Print the first letter that has the outcome count of only 1. 
+		Console.WriteLine("The first non-repeated letter is " + fChar);
+	}
+}
