@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+					
+public class Program
+{
+	public static void Main()
+	{
+		//How to remove duplicate elements in an array in place.
+		//To expand on this idea, delete an element in an array while not disturbing the sequence of the array
+		int[] tNums = {5, 6, 13, 24, 35, 5, 14, 23, 24, 62, 35};
+		List<int> dPos = new List<int>();
+		List<int> duplicates = new List<int>();
+		
+		for (int a = 0; a < tNums.Length; a++)
+		{
+			for (int b = 0; b < tNums.Length; b++)
+			{
+				if (a == b)
+				{
+					
+				}
+				else if (tNums[a] == tNums[b])
+				{
+					if (duplicates.Contains(tNums[b]))
+					{
+						break;
+					}
+					else
+					{
+						duplicates.Add(tNums[b]);
+						dPos.Add(b);
+					}
+				}
+			}
+		}
+		
+		
+		//Build Code here to remove these elements from the array by creating a new array without these elements in these positions
+		//Maybe turn into list for manipulation then add all values back into a new array?
+		List<int> tempArray = new List<int>();
+		tempArray.AddRange(tNums); //Created the list from the array
+		dPos.Reverse(); //Reverse the array positions 
+		
+		foreach (int x in dPos)
+		{
+			tempArray.RemoveAt(x);
+		}
+		//Console.WriteLine(tempArray.Count);
+		
+		int[] nTNums = new int[tempArray.Count];
+		nTNums = tempArray.ToArray();
+		
+		//Print out list for debugging
+		foreach (int i in nTNums)
+		{
+			Console.WriteLine(i);
+		}
+	}
+}
